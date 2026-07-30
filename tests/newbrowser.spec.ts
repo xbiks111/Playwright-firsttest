@@ -30,7 +30,7 @@ test('File upload', async({context,page})=>{
 await page.goto('https://the-internet.herokuapp.com/upload')
 
 //let fileInput = page.locator('#file-upload').setInputFiles('testdata/result.txt')
-let fileInput = page.locator('#file-upload').setInputFiles("E:/STUDY2026/PLAYWRIGHT2026/MohanMohan/Class Recordings/Playwright/Notes/result.txt")
+let fileInput = page.locator('#file-upload').setInputFiles("result.txt")
 
 
 await page.waitForTimeout(3000)
@@ -43,12 +43,10 @@ await page.goto('https://testautomationpractice.blogspot.com/')
 
 
 let fileInput1 = page.locator('#multipleFilesInput').setInputFiles([
- 
-    "D:/testfiles/result1.txt",
-    "D:/testfiles/result2.txt",
-    "D:/testfiles/result3.txt"
-
-])
+    "result.txt",
+    "result.txt",
+    "result.txt"
+  ])
 await page.waitForTimeout(3000)
 
 

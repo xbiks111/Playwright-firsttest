@@ -10,6 +10,7 @@ services:
     volumes:
       - ./tests:/app/tests
       - ./playwright.config.ts:/app/playwright.config.ts
+      - ./result.txt:/app/result.txt
       - playwright-report:/app/playwright-report
     environment:
       - CI=true
