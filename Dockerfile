@@ -1,12 +1,10 @@
-FROM mcr.microsoft.com/playwright:v1.62.0-node-22
+FROM mcr.microsoft.com/playwright:v1.62.0
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --only=production
 
 COPY . .
-
-RUN npx playwright install --with-deps chromium firefox webkit
 
 CMD ["npx", "playwright", "test"]
