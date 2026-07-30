@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  playwright-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: playwright-tests:latest
+    container_name: playwright-tests
+    volumes:
+      - ./tests:/app/tests
+      - ./playwright.config.ts:/app/playwright.config.ts
+      - playwright-report:/app/playwright-report
+    environment:
+      - CI=true
+    command: ["npx", "playwright", "test"]
+
+  playwright-report:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - playwright-report:/usr/share/nginx/html:ro
+    depends_on:
+      - playwright-tests
+    entrypoint: /bin/sh
+    command: -c "while true; do sleep 10; done"
+
+volumes:
+  playwright-report:
