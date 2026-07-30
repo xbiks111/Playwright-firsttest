@@ -24,6 +24,7 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}/tests:/app/tests \
           -v ${{ github.workspace }}/playwright.config.ts:/app/playwright.config.ts \
+          -v ${{ github.workspace }}/result.txt:/app/result.txt \
           -e CI=true \
           playwright-tests
 
